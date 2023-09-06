@@ -23,8 +23,7 @@
 export function parsePromised(json) {
   return new Promise((resolve, reject) => {
     try {
-      const parsedJson = JSON.parse(json);
-      resolve(parsedJson);
+      resolve(JSON.parse(json));
     } catch (error) {
       reject(error);
     }
@@ -60,11 +59,7 @@ export const handlePromise = (promise) => {
   return promise
     .then((value) => value)
     .catch((reason) => {
-      if (reason.message) {
-        return onReject(reason);
-      } else {
-        return reason;
-      }
+      return reason.message ? onReject(reason) : reason;
     });
 };
 

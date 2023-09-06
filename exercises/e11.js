@@ -38,7 +38,7 @@ export const getLoginList = (data) => {
  */
 
 // Your code goes here ...
-const getData = fetch(usersUrl).then((response) => response.json());
+const getData = fetch(usersUrl);
 
 /**
  * @task
@@ -52,11 +52,13 @@ const getData = fetch(usersUrl).then((response) => response.json());
  */
 
 // Your code goes here ...
-export const result = getData.then((data) => {
-  const logins = getLoginList(data);
-  console.log(logins);
-  return logins;
-});
+export const result = getData
+  .then((response) => response.json())
+  .then((data) => {
+    const logins = getLoginList(data);
+    console.log(logins);
+    return logins;
+  });
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-11"

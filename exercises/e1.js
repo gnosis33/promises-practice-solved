@@ -17,18 +17,18 @@
 // Your code goes here
 
 // Creating a promise using Promise constructor
-export const getPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve('The PROMISE was RESOLVED');
-    }, 1000);
-  });
-  
-  // Logging the resolved value using .then() syntax and returning the value
-  getPromise.then((value) => {
-    console.log(value);
-    return value;
-  });
-  
+export const getPromise = new Promise((resolve) => {
+  setTimeout(() => {
+    resolve("The PROMISE was RESOLVED");
+  }, 1000);
+});
+
+// Logging the resolved value using .then() syntax and returning the value
+getPromise.then((value) => {
+  console.log(value);
+  return value;
+});
+
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-1"
 // If the test has all tests passed, switch to the next exercise file

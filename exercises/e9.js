@@ -68,12 +68,11 @@ export function onReject(arg) {
 
 // Your code goes here...
 // Creating a promise chain
-export const promise = Promise.resolve(1)
+export const promise = Promise.resolve(iterate(1))
   .then(iterate)
   .then(iterate)
   .then(iterate)
   .then(iterate)
-  .then(iterate) // 5th call
   .then(alwaysThrows)
   .then(iterate) // This won't be reached
   .then(iterate) // This won't be reached

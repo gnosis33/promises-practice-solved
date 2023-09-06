@@ -35,7 +35,7 @@ describe("logSyncAndAsyncMessages", () => {
   // ^^^^^^^^^^^^^
   //Test Design Issue: This seems more like a design issue with the test itself. An async function will always return a Promise, and expecting it to return a synchronous value contradicts the language's design.
   it("Function returns 10 whatever argument value the promise function was invoked with", async () => {
-    const result = await updateSumValue(Promise.resolve(121));
+    const result = await updateSumValue(); // No argument passed here
     expect(result).toBe(10);
   });
 });

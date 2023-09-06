@@ -16,15 +16,15 @@
 
 // Function that returns a promise which rejects and handles the rejection and finally logs a message
 export const handlePromise = () => {
-  return new Promise((resolve, reject) => {
-    reject('REJECTED!');
+  return new Promise((_, reject) => {
+    reject("REJECTED!");
   })
-  .catch((reason) => {
-    console.log('Rejection reason:', reason);
-  })
-  .finally(() => {
-    console.log('This promise is finished!');
-  });
+    .catch((reason) => {
+      console.log("Rejection reason:", reason);
+    })
+    .finally(() => {
+      console.log("This promise is finished!");
+    });
 };
 
 // === TEST YOURSELF ===

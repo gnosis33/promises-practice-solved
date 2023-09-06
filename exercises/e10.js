@@ -23,11 +23,10 @@ export const promiseArr = [promise1, promise2, promise3, promise4];
  * * .allSettled()
  */
 
-// Your code goes here...
 // Refactor to use a proper method for handling multiple promises
-export const handlePromise1 = Promise.allSettled(promiseArr).then(
-  (results) => results.find((result) => result.status === "rejected").reason
-);
+export const handlePromise1 = Promise.all(promiseArr)
+  .then((results) => results.find((r) => r.status === "rejected").reason)
+  .catch((err) => err);
 
 /**
  * @task
@@ -46,18 +45,10 @@ export const handlePromise1 = Promise.allSettled(promiseArr).then(
 // Your code goes here...
 // Create a function that handles an array of promises to return the resolved value of promise3
 export const handlePromise2 = (arr) => {
-  // Filter to only include "Promise 3 RESOLVED"
   const filteredArr = arr.filter((promise) => promise === promise3);
-
   return Promise.any(filteredArr)
-    .then((value) => {
-      if (value === "Promise 3 RESOLVED") {
-        return value;
-      } else {
-        return Promise.reject("Not the expected promise");
-      }
-    })
-    .catch((e) => e);
+    .then((val) => val)
+    .catch((err) => err);
 };
 
 /**
@@ -77,7 +68,9 @@ export const handlePromise2 = (arr) => {
 // Your code goes here...
 // Create a function that handles an array of promises to return an array of all promises' statuses and values/reasons
 export const handlePromise3 = (arr) => {
-  return Promise.allSettled(arr);
+  return Promise.allSettled(arr)
+    .then((val) => val)
+    .catch((err) => err);
 };
 
 /**
